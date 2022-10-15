@@ -1,0 +1,44 @@
+<p>pipes works!</p>
+<h4>{{name }}</h4>
+<h4>{{name | uppercase }}</h4>
+<h4>{{name | lowercase }}</h4>
+<h4>{{name | titlecase }}</h4>
+
+
+   <h4>{{mySal | currency: 'INR' }}</h4>
+<!-- pipname symbol pipname argument -->
+====================================================<br/>
+
+<h4>{{today }}</h4>
+<h4>{{today | date }}</h4>
+====================================================<br/>
+
+<h4>{{24556332115 | number}}</h4>
+<h4>{{245.56332115 | number}}</h4>
+<h4>{{24.523 | number:'3.2-4'}}</h4>
+<h4>{{0.10 | percent}}</h4>
+<h4>{{user }}</h4>
+<h4>{{user | json}}</h4>
+======================================<br>
+<h4 *ngFor="let entry of user | keyvalue">
+   {{entry.key}}-{{entry.value}}
+</h4>
+=========================================================<br>
+<h4>{{arr | slice: 2}}</h4>
+<h4>{{arr | slice: 2:-1}}</h4>
+========================================================<br>
+<textarea id="" cols="30" rows="5"[(ngModel)]="msg"></textarea>
+<div> msg is: {{msg}} </div>
+<div>Remaining chars: {{msg | remaining}} </div>
+========================================================<br>
+<input type="number" [(ngModel)]="num">
+<div>{{num | ordinal}}</div>
+<br>=====================================================<br>
+Unsorted array:
+<span *ngFor="let item of arr">{{item}}, &nbsp;</span> <br>
+
+Sorted array
+<span *ngFor="let item of arr | mySort">{{item}}, &nbsp;</span> <br>
+
+<input type="number" #newNum>
+<button (click)="arr.push(+newNum.value)">Push new value </button>

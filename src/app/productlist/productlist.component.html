@@ -1,0 +1,43 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="card-body col-sm-3">
+      <div class="input-group rounded">
+        <input [(ngModel)]="searchText " class="form-control rounded" placeholder="Search" />
+    </div>
+    </div>
+   <div class="col-sm-4">
+      <button class="btn btn-primary" (click)="SortProducts('asc')" >Asc Price</button> &nbsp;
+      <button class="btn btn-secondary"(click)="SortProducts('dsc')" >Dsc Price</button>
+
+   </div>
+  </div>
+  <div class="row">
+    <div
+      class="col-sm-3"
+      *ngFor="let prod of products | paginate: { itemsPerPage: 4, currentPage: p } | filter: searchText"
+    >
+      <div class="card">
+        <img [src]="prod.image" height="200px" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ prod.category }}</h5>
+          <p class="card-text">{{ prod.id }}</p>
+          <p class="card-text">{{ prod.title }}</p>
+          <p class="card-text">Rs. {{ prod.price }}</p>
+          <p class="card-text">Rating: {{ prod.rating.rate }}</p>
+          <button class="btn btn-primary" (click)="addToCart()" >Add to Cart</button>&nbsp;
+          <button class="btn btn-secondary" [routerLink]="['/productdetails', prod.id]" >View Details - Path Param </button>
+          <button class="btn btn-danger"
+           [routerLink]="['/productdetail']" 
+           [queryParams]="{id:prod.id, title:prod.title, price:prod.price}" >
+            View Details-Query Param </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

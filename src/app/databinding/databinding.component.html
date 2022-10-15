@@ -1,0 +1,67 @@
+<h1>databinding works!</h1>
+
+<!--  <div>{{name}}</div> -->
+
+<div [innerHTML]="name"></div>
+
+<img src="{{ img_url }}" alt="" /> &nbsp; <img [src]="img_url" alt="" /> &nbsp;
+<img bind-src="img_url" alt="" /> &nbsp;
+
+<input value="{{ name }}" />&nbsp; <input [value]="name" />&nbsp;
+<input bind-value="name" />&nbsp; <input [(ngModel)]="name" />&nbsp;
+
+<button disabled="{{ flag }}">Click me</button> &nbsp;
+<button [disabled]="flag">Click me</button>&nbsp;
+<button bind-disabled="flag">Click me</button>&nbsp;<br />
+=============================================================
+<h1 [hidden]="flag">Hellooooooo</h1>
+<button (click)="toggle()">{{ flag ? "SHOW" : "HIDE" }}</button> -->
+==========================================================================<br />
+<br />
+<input [type]="show ? 'text' : 'password'" />
+<button (click)="password()">{{ show ? "Hide" : "Show" }}</button>
+============================================================================
+<br />
+<br />
+
+<!-- Using Databinding -->
+<!-- <input [(ngModel)]="num1" type="number"/>
+<input [(ngModel)]="num2" type="number"/>
+<p>Addtion is {{num1+num2}}</p> -->
+
+============================================================================
+<br />
+<br />
+
+<!-- Using Template reference variable -->
+<input type="number" #num1 />
+<input type="number" ref-num2 />
+<button (click)="addition(num1.value, num2.value)" class="btn btn-primary">
+  Add
+</button>
+
+<br />============================================================================<br />
+
+<h1>Class Binding</h1>
+<input type="number" [(ngModel)]="val1" />
+<h2 [class.text-danger]="val1 % 2 !== 0">
+  {{ val1 }} is {{ val1 % 2 == 0 ? "Even" : "Odd" }}
+</h2>
+
+<br />============================================================================<br />
+<input type="number" [(ngModel)]="n1" />
+<h2 [class.text-success]="n1 >= 18">
+  Person Who's age is {{ n1 }}
+  {{ n1 >= 18 ? "Elidgable" : "not Elidgable" }} for voting....
+</h2>
+
+<button class="btn" [ngClass]="flag ? 'btn-success' : 'btn-danger'">
+  This is class binding
+</button>
+
+<br />============================================================================<br />
+
+<h1>Style Binding</h1>
+<p [style.color]="flag ? 'red' : 'green'">This is Paragraph</p>
+
+<br />============================================================================<br />

@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2 class="text-center">Users List</h2>
+            <button class="btn btn-primary" (click)="FetchUsers()">Fetch Users</button>
+            <img *ngIf="isLoading" src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.gif">
+            <table *ngIf="!isLoading" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.first_name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="DeleteUser(user.id)">Delete</button>&nbsp;
+                            <button class="btn btn-secondary" (click)="GetUserDetail(user.id,user.first_name,user.last_name,user.email)">Edit</button> &nbsp;  
+                            <!--   <button  class="btn btn-primary" (click)="viewUsers(first_name,last_name,email)">View User</button> -->
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <h3 class="text-center">Add New User</h3>
+            Name:&nbsp; &nbsp;<input [(ngModel)]="first_name"/><br>
+            Last Name:<input [(ngModel)]="last_name"/><br>
+            Email:<input [(ngModel)]="email"/><br>
+            <button *ngIf="!isUpdating" class="btn btn-primary" (click)="AddNewUser(first_name,last_name,email)">Add User</button>&nbsp;
+            <button *ngIf="isUpdating" class="btn btn-primary" (click)="UpdateUser(first_name,last_name,email)">Update User</button>
+
+        </div>
+    </div>
+
+</div>
