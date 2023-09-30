@@ -26,11 +26,11 @@
 
         </div>
         <div class="mb-3">
-          <label for="email">Email</label>
+          <label for="email">Email Address</label>
           <label class="text-danger">*</label>
           <input type="email" class="form-control" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" placeholder="Enter Email"name="email" ngModel #email="ngModel"/>
-          <div class="alert alert-danger" *ngIf="email.invalid && email.touched">Email is required </div>
-          <div class="alert alert-danger" *ngIf="email.hasError('pattern') && email.touched">Email is not valid </div>
+          <div class="alert alert-danger" *ngIf="email.invalid && email.touched">Email Address is required </div>
+          <div class="alert alert-danger" *ngIf="email.hasError('pattern') && email.touched">Email Address is not valid </div>
 
 
         </div>
@@ -55,6 +55,7 @@
             <option value="Angular">Angular</option>
             <option value="HTML">HTML</option>
             <option value="Javascript">Javascript</option>
+            <option value="Javascript">React Js</option>
           </select>
         </div>
         <div class="mb-3">
